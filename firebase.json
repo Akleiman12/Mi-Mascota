@@ -4,10 +4,11 @@
   },
   "hosting": {
     "public": "Mi mascota",
-    "rewrites": [
+    "redirects": [ 
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source" : "/index.html",
+        "destination" : "/index2.html",
+        "type" : 301
       }
     ]
   }
