@@ -47,55 +47,53 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-
-    <style>
-    #view-source {
-      position: fixed;
-      display: block;
-      right: 0;
-      bottom: 0;
-      margin-right: 40px;
-      margin-bottom: 40px;
-      z-index: 900;
-    }
-    </style>
-    <link rel="stylesheet" href="loginstyles.css">
+    <link rel="stylesheet" href="styles.css">
+        <!-- Wide card with share menu button -->
+  <style>
+  .demo-card-wide.mdl-card {
+    width: 512px;
+    align-self: center;
+  }
+  .demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+  }
+  .demo-card-wide > .mdl-card__menu {
+    color: #fff;
+  }
+  </style>
   </head>
-  <body>
-  <div class="container">
-  
-    <div class="row" id="pwd-container">
-      <div class="col-md-4"></div>    
-      <div class="col-md-4">
-        <section class="login-form">
-          <form method="post" action="#" role="login">
-            <img src="images/favicon.png" class="img-responsive" alt="" width="150px" />
-            <h1 align="center">Mi Mascota</h1>
-            <h4 align="center"> Registro: </h4>
-            <div align="center">
-              <input type="email" name="email" placeholder="Email" required class="form-control input-lg"/>
-              <input type="password" class="form-control input-lg" id="password" placeholder="Password" required="" />
+  <body style="background-color: #6B7C8C;"">
+
+    <div align="center" style="margin-top: 80px">
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 750px; height: 550px">
+        <img src="images/favicon.png" style="height: 175px">
+        <h1 style="margin-top: 20px;"> Bienvenido a Mi Mascota! </h1>
+          <form action="#" style="margin-top:25px">
+            <div class="mdl-textfield mdl-js-textfield">
+              Correo Electronico<br>
+              <input class="mdl-textfield__input" type="text" id="email" ><br>
             </div>
-            <div class="pwstrength_viewport_progress"></div>
-            <div  align="center">
-            <button href="index.html" type="submit" name="go" class="btn btn-lg btn-primary btn-block">Registrarse y Entrar</button>
+            <div class="mdl-textfield mdl-js-textfield">
+              Contraseña<br>
+              <input class="mdl-textfield__input" type="password" id="password"><br>
             </div>
-            <div align="center">
-              <a href="login.html">Ya tengo una cuenta.</a>
+            <div class="mdl-textfield mdl-js-textfield">
+              Nombre<br>
+              <input class="mdl-textfield__input" type="text" id="nombre"><br>
+            </div>
+            <div>
+
+              <button class="mdl-button mdl-js-button mdl-button--raised" href="index.html" onclick="registro()">
+                Registrar y Entrar!
+              </button>
             </div>
           </form>
-        </section>  
-      </div>
-      <div class="col-md-4"></div>
-    </div>
-</div>
+          <a href="registro.html" style="margin-top: 10px">Todavia no tienes cuenta? Registrate ya!</a>
 
-  <script src="login.js"></script>
+      </div>
+    </div>
+    <script type="text/javascript" src="firebase.js"></script>
+    <script type="text/javascript" src="registro.js"></script>
   </body>
 </html>
-
-
-
-
-
-
