@@ -2,11 +2,11 @@ function registro(){
 	var email = document.getElementById("email").value;
 	var password = document.getElementById("password").value;
 	var nombre = document.getElementById("nombre").value;
-	console.log("HALOS");
 
+	//creacion de usuario.
 	firebase.auth().createUserWithEmailAndPassword(email, password)
     .catch(function(error) {
-	  	// Handle Errors here.
+	  	// Manejo de errores.
 	  	var errorCode = error.code;
 		var errorMessage = error.message;
 		if (errorCode == 'auth/weak-password') {
@@ -16,8 +16,18 @@ function registro(){
 		}
 		console.log(error);
 	}).then(function(){
+		var user = firebase.auth().currentUser;
 
-	})
 
-	window.location = "/index.html";
+		//acceso a la base de datos.
+		firebase.database().ref('users/'+user.uid).set({
+			nombre: nombre,
+			email: email,
+			concursando: concursando
+		}).then(function(){
+			window.location = "/";
+		}, function(error){
+			alert(error.code);
+		});
+	});
 }
