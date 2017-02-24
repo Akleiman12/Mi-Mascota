@@ -28,27 +28,25 @@
       query.once("value")
         .then(function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
-            // var nombre = childSnapshot.child("nombre").val();
-            // var apellido = childSnapshot.child("apellido").val();
-            // var tr = document.createElement('tr');   
 
-            // var td1 = document.createElement('td');
-            // var td2 = document.createElement('td');
-            // var td3 = document.createElement('td');
-
-            // var nombreCampo = document.createTextNode(nombre);
-            // var apellidoCampo = document.createTextNode(apellido);
-
-            // td1.appendChild(nombreCampo);
-            // td2.appendChild(apellidoCampo);
-            // tr.appendChild(td1);
-            // tr.appendChild(td2);
-
-            // table.appendChild(tr);
             var last=childSnapshot.child("apellido").val();
             var first =childSnapshot.child("nombre").val();
-            var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><a href="">Ver Usuario</a></td></tr>');
-            $("#tablaUsuarios").append(newRow);
+            var ced = childSnapshot.child("cedula").val();
+            var telf = childSnapshot.child("telefono").val();
+            var id = childSnapshot.child("id").val();
+
+            var query2 = firebase.database().ref("mascota/"+id).orderByKey();
+
+            query2.once("value").then(function(snapshot2){
+              var nombrem = snapshot2.child("nombre").val();
+              var edadm = snapshot2.child("edad").val();
+              var historiam = snapshot2.child("historia").val();
+
+              var newRow = $('<tr><td></td><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+telf+'</p></td><td><p>'+nombrem+'</p></td><td><p>'+edadm+'</p></td><td><p>'+historiam+'</p></td></tr>');
+              $("#tablaUsuarios").append(newRow);
+            });
+
+            
         });
       });
     </script>
@@ -213,7 +211,19 @@
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
-        <table id="tablaUsuarios">
+        <table id="tablaUsuarios" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Numero de Cedula</th>
+            <th>Numero de Telefono</th>
+            <th>Nombre de la Mascota</th>
+            <th>Edad de la Mascota</th>
+            <th>Historia de la Mascota</th>
+            <th>Fotos</th>
+          </tr>
+          </thead>
         </table>
       </main>
     </div>

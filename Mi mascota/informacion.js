@@ -50,17 +50,29 @@ function enviarInfo(){
 					uploadtask1.on('state_changed', function(snapshot){
 					}, function(error){
 						alert("ERROR.")
-					}, function(){});
+					}, function(){
+						var name = file1.name;
+						firebase.database().ref("img/"+user.uid).set({
+							name1: name
+					})});
 					console.log("upload2");
 					uploadtask2.on('state_changed', function(snapshot){
 					}, function(error){
 						alert("ERROR.")
-					}, function(){});
+					}, function(){
+						var name = file1.name;
+						firebase.database().ref("img/"+user.uid).update({
+							name2: name
+					})});
 					console.log("upload3");
 					uploadtask3.on('state_changed', function(snapshot){
 					}, function(error){
 						alert("ERROR.")
-					}, function(){});
+					}, function(){
+						var name = file1.name;
+						firebase.database().ref("img/"+user.uid).update({
+							name1: name
+					})});
 					$("#infoBtn").show();
 					$("#infoSpinner").hide();
 

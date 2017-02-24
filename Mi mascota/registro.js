@@ -12,7 +12,8 @@ function registro(){
 		//acceso a la base de datos.
 		firebase.database().ref('users/'+user.uid).set({
 			nombre: nombre,
-			email: email
+			email: email,
+			id: user.uid
 		}).then(function(){
 			window.location = "/";
 		}).catch(function(error){
