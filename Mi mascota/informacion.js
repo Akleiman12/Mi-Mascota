@@ -47,36 +47,49 @@ function enviarInfo(){
 					var uploadtask3 = storageRef.child('images/'+user.uid+'/'+file3.name).put(file3);
 					console.log("final1");
 					console.log("upload1");
+					
 					uploadtask1.on('state_changed', function(snapshot){
+						console.log("Cargando1");
 					}, function(error){
-						alert("ERROR.")
+						alert("ERROR.");
 					}, function(){
-						var name = file1.name;
+						var downloadURL = uploadtask1.snapshot.downloadURL;
+						console.log("1 uploaded");
 						firebase.database().ref("img/"+user.uid).set({
-							name1: name
-					})});
-					console.log("upload2");
-					uploadtask2.on('state_changed', function(snapshot){
-					}, function(error){
-						alert("ERROR.")
-					}, function(){
-						var name = file1.name;
-						firebase.database().ref("img/"+user.uid).update({
-							name2: name
-					})});
-					console.log("upload3");
-					uploadtask3.on('state_changed', function(snapshot){
-					}, function(error){
-						alert("ERROR.")
-					}, function(){
-						var name = file1.name;
-						firebase.database().ref("img/"+user.uid).update({
-							name1: name
-					})});
+							url1: downloadURL
+						})
+
+						uploadtask2.on('state_changed', function(snapshot){
+							console.log("Cargando2");
+						}, function(error){
+							alert("ERROR.");
+						}, function(){
+							var downloadURL = uploadtask2.snapshot.downloadURL;
+							console.log("2 uploaded");
+							firebase.database().ref("img/"+user.uid).update({
+								url2: downloadURL
+							})
+
+							console.log("upload3");
+							uploadtask3.on('state_changed', function(snapshot){
+								console.log("Cargando3");
+							}, function(error){
+								alert("ERROR.");
+							}, function(){
+								var downloadURL = uploadtask1.snapshot.downloadURL;
+								console.log("3 uploaded");
+								firebase.database().ref("img/"+user.uid).update({
+									url3: downloadURL
+								})
+							});
+						});
+					});
+
+					
 					$("#infoBtn").show();
 					$("#infoSpinner").hide();
 
-					window.location = "index.html";
+					//window.location = "index.html";
 
 
 				});
