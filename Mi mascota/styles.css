@@ -214,6 +214,10 @@ _:-ms-input-placeholder, :root .demo-graph {
           align-items: center;
 }
 
+#adminView{
+  display: none;
+}
+
 #loginSpinner{
   display: none;
 }
