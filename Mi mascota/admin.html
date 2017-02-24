@@ -41,7 +41,7 @@
               var edadm = snapshot2.child("edad").val();
               var historiam = snapshot2.child("historia").val();
 
-              var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+nombrem+'</p></td><td><a href="perfil?useriID='+id+'">Perfil</a></td></tr>');
+              var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+nombrem+'</p></td><td><a href="perfil?userID='+id+'">Perfil</a></td></tr>');
               $("#tablaUsuarios").append(newRow);
             });
 

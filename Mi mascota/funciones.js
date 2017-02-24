@@ -8,6 +8,9 @@ firebase.auth().onAuthStateChanged(function(user){
 		$(".pantallaRegistro").hide();
 		$("#register").hide();
 		$("#adminView").show();
+		$("#mainPerfil").show();
+		$("#mainPerfil").show();
+		$("#tablaUsuarios").show();
 
 	}
 	else{
@@ -16,6 +19,7 @@ firebase.auth().onAuthStateChanged(function(user){
 		$("#register").show();
 		$("#adminView").hide();
 		$("#tablaUsuarios").hide();
+		$("#mainPerfil").hide();
 	}
 })
 
