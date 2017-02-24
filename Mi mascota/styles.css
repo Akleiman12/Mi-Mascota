@@ -217,7 +217,9 @@ _:-ms-input-placeholder, :root .demo-graph {
 #loginSpinner{
   display: none;
 }
-
+#infoSpinner{
+  display: none;
+}
 #registroSpinner{
   display: none;
 }

@@ -11,6 +11,10 @@ function enviarInfo(){
 		var historiaMascota = document.getElementById("historiam").value;
 
 		if(nombreUser!="" && apellidoUser!="" && cedulaUser!="" && telefonoUser!="" && nombreMascota!="" && edadMascota!="" && historiaMascota!=""){
+			
+			$("#infoBtn").hide();
+			$("#infoSpinner").show();
+
 			firebase.database().ref("users/"+user.uid).update({
 				nombre: nombreUser,
 				apellido: apellidoUser,
@@ -23,15 +27,23 @@ function enviarInfo(){
 					historia: historiaMascota
 				}).catch(function(error){
 					alert("ERROR.");
+					$("#infoBtn").show();
+					$("#infoSpinner").hide();
+				}).then(function(){
+					$("#infoBtn").show();
+					$("#infoSpinner").hide();
 				});
 			}).catch(function(error) {
 	  	// Manejo de errores.
 	  			alert("ERROR.");
+	  			$("#infoBtn").show();
+				$("#infoSpinner").hide();
 			});
 		}else{
 			alert("Recuerde llenar todos los campos.");
 		}
 	}else{
 		alert("Debe hacer login para poder ingresar informacion.");
+
 	}
 }

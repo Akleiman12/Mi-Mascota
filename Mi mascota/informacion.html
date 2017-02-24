@@ -20,6 +20,8 @@
     <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
     <script type="text/javascript" src="firebase.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="funciones.js"></script>
     <script type="text/javascript" src="informacion.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,8 +70,21 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Informacion del Usuario</span>
+          <span class="mdl-layout-title">Informacion del usuario</span>
           <div class="mdl-layout-spacer"></div>
+          <div class="mdl-navigation">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="muestraLogin()" id="signin">
+       Sign In
+      </button>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="signout()" id="signout">
+       Sign Out
+      </button>
+          </div>
+          <div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="muestraRegistro()" id="register">
+          Registrate
+            </button>
+      </div>
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
@@ -132,9 +147,10 @@
                   <textarea class="mdl-textfield__input" type="text" rows= "5" id="historiam" ></textarea><br>
                 </div><br>
                 <div align="right">
-                  <button class="mdl-button mdl-js-button mdl-button--raised" onclick="enviarInfo()">
+                  <button class="mdl-button mdl-js-button mdl-button--raised" onclick="enviarInfo()" id ="infoBtn">
                     Enviar Informacion!
                   </button>
+                  <div class="mdl-spinner mdl-js-spinner is-active" id="infoSpinner"></div>
                 </div>
               
 
