@@ -14,7 +14,6 @@ function registro(){
 		} else {
 	    	alert(errorMessage);
 		}
-		console.log(error);
 	}).then(function(){
 		var user = firebase.auth().currentUser;
 
@@ -22,11 +21,10 @@ function registro(){
 		//acceso a la base de datos.
 		firebase.database().ref('users/'+user.uid).set({
 			nombre: nombre,
-			email: email,
-			concursando: concursando
+			email: email
 		}).then(function(){
 			window.location = "/";
-		}, function(error){
+		}).catch(function(error){
 			alert(error.code);
 		});
 	});
