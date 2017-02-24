@@ -1,8 +1,10 @@
 firebase.auth().onAuthStateChanged(function(user){
 	if(user){
-		$(".pantallaLogin").hide();
 		$("#signin").hide();
+		console.log("oculte signin");
 		$("#signout").show();
+		console.log("mostre signout");
+		$(".pantallaLogin").hide();
 	}
 	else{
 		$("#signin").show();
@@ -32,7 +34,7 @@ function login(){
 			$("#loginBtn").show();
 	  	}).then(function(){
 
-	})
+	});
 	}
 	else{
 	alert("Debes llenar los campos necesarios");
