@@ -37,6 +37,10 @@ function enviarInfo(){
 					$("#infoBtn").show();
 					$("#infoSpinner").hide();
 				}).then(function(){
+					
+					storageRef.child('images/'+user.uid).delete().catch(function(error){
+						console.log("Montando fotos por primera vez");
+					})
 					var storageRef = firebase.storage().ref();
 					console.log("creando tasks");
 					console.log("creando task1");
@@ -76,7 +80,7 @@ function enviarInfo(){
 							}, function(error){
 								alert("ERROR.");
 							}, function(){
-								var downloadURL = uploadtask1.snapshot.downloadURL;
+								var downloadURL = uploadtask3.snapshot.downloadURL;
 								console.log("3 uploaded");
 								firebase.database().ref("img/"+user.uid).update({
 									url3: downloadURL

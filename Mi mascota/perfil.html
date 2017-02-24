@@ -44,15 +44,14 @@
           var tel= snapshot.child("telefono").val();
           var email= snapshot.child("email").val();
           console.log(first);
-          $("#detalles").html("<h3 align=\"center\">"+first+" "+last+"</h3> <p align=\"center\">Cedula: "+cedula+" / Telefono: "+tel+" / Correo: "+email+"</p>"); 
+          $("#detalles").html("<p style=\"font-size: 150%;\">    Nombre: "+first+"<br>    Apellido: "+last+"<br>   Cedula: "+cedula+"<br>    Telefono: "+tel+"<br>   Correo: "+email+"</p>"); 
           var query2 = firebase.database().ref("mascota/"+id);
           query2.once("value").then(function(snapshot2){
 
             var nombreMas = snapshot2.child("nombre").val();
             var edadMascota = snapshot2.child("edad").val();
             var historia = snapshot2.child("historia").val();
-            $("#historia").html("<span class=\"card-title\">"+nombreMas+"</span><p>"+historia+"</p>");
-            $("#edad").html("<p>"+edadMascota+"</p>");
+            $("#mascota").html("<p style=\"font-size: 150%;\">   Nombre: "+nombreMas+"<br>   Historia Breve: "+historia+"<br>    Edad: "+edadMascota+"</p>");
           });          
         });
 
@@ -218,44 +217,15 @@
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100" >
-        <div class="mdl-grid demo-content" id="mainPerfil">
-        <div id="detalles" style="margin: 0 auto;">
-    
-  </div>
-  <div>
-    <div class="col s12 m6" align="center">
-              <div class="card blue-grey">
-                <div class="card-content white-text" id="historia">
-                    
-                </div>
-          <div class="card-action" id="edad">
+        <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="max-width: 90%; width: 90%">
+              <h1 align="left" style="margin-bottom: 10px">Informacion de Perfil</h1><br>
+              <h2 align="left" style="margin-bottom: 5px"> Informacion de Usuario:</h2><br>
+              <div id="detalles">
               </div>
-            </div>
-            </div>
-  <div class="container pics">
-    <div class="title" id="fotos">
-    </div>
-    <div class="row row-1">
-      <div class="col m4 s12">
-        <div class="card">
-                <div class="card-image" id="first-img">
-                </div>
+              <h2 align="left" style="margin-bottom: 5px"> Informacion de Mascota:</h2><br>
+              <div id="mascota">
+
               </div>
-      </div>
-      <div class="col m4 s12">
-        <div class="card">
-                <div class="card-image" id="second-img">
-                </div>
-              </div>
-      </div>
-      <div class="col m4 s12">
-        <div class="card">
-                <div class="card-image" id="third-img">
-                </div>
-              </div>
-      </div>
-    </div>
-  </div>
         </div>
       </main>
     </div>
