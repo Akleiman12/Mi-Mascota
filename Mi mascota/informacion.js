@@ -12,10 +12,7 @@ function enviarInfo(){
 		var img1 = $('#img1').val();
 		var img2 = $('#img2').val();
 		var img3 = $('#img3').val();
-		var file1 = document.getElementById('img1').files[0];
-		var file2 = document.getElementById('img2').files[0];
-		var file3 = document.getElementById('img3').files[0];
-
+		console.log(img1+"."+img2+"."+img3);
 
 		if(nombreUser!="" && apellidoUser!="" && cedulaUser!="" && telefonoUser!="" && nombreMascota!="" && edadMascota!="" && historiaMascota!="" && img1!="" && img2!="" && img3!=""){
 			
@@ -37,36 +34,8 @@ function enviarInfo(){
 					$("#infoBtn").show();
 					$("#infoSpinner").hide();
 				}).then(function(){
-					var storageRef = firebase.storage().ref();
-					console.log("creando tasks");
-					console.log("creando task1");
-					var uploadtask1 = storageRef.child('images/'+user.uid+'/'+file1.name).put(file1);
-					console.log("creando task2");
-					var uploadtask2 = storageRef.child('images/'+user.uid+'/'+file2.name).put(file2);
-					console.log("creando task3");
-					var uploadtask3 = storageRef.child('images/'+user.uid+'/'+file3.name).put(file3);
-					console.log("final1");
-					console.log("upload1");
-					uploadtask1.on('state_changed', function(snapshot){
-					}, function(error){
-						alert("ERROR.")
-					}, function(){});
-					console.log("upload2");
-					uploadtask2.on('state_changed', function(snapshot){
-					}, function(error){
-						alert("ERROR.")
-					}, function(){});
-					console.log("upload3");
-					uploadtask3.on('state_changed', function(snapshot){
-					}, function(error){
-						alert("ERROR.")
-					}, function(){});
 					$("#infoBtn").show();
 					$("#infoSpinner").hide();
-
-					window.location("/");
-
-
 				});
 			}).catch(function(error) {
 	  	// Manejo de errores.
