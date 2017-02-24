@@ -23,6 +23,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="funciones.js"></script>
     <script type="text/javascript" src="informacion.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#upload').bind("click",function(){ 
+          var imgVal = $('#uploadImage').val(); 
+          if(imgVal==''){ 
+            alert("empty input file"); 
+          } 
+          return false; 
+
+    }); 
+});
+</script> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
@@ -145,6 +157,20 @@
                 <div class="mdl-textfield mdl-js-textfield">
                   Historia de su Mascota:<br>
                   <textarea class="mdl-textfield__input" type="text" rows= "5" id="historiam" ></textarea><br>
+                </div><br>
+                <h3 class="mld-card_title-text"> Imagenes de su Mascota: </h3>
+                <p> A continuacion seleccione las imagenes que desea usar para el concurso:</p>
+                <div>
+                  Imagen 1:<br>
+                  <input type="file" accept="image/*" id="img1"><br>
+                </div><br>
+                <div>
+                  Imagen 2:<br>
+                  <input type="file" accept="image/*" id="img2"><br>
+                </div><br>
+                <div>
+                  Imagen 3:<br>
+                  <input type="file" accept="image/*" id="img3"><br>
                 </div><br>
                 <div align="right">
                   <button class="mdl-button mdl-js-button mdl-button--raised" onclick="enviarInfo()" id ="infoBtn">

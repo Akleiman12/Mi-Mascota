@@ -9,8 +9,12 @@ function enviarInfo(){
 		var nombreMascota = document.getElementById("nombrem").value;
 		var edadMascota = document.getElementById("edadm").value;
 		var historiaMascota = document.getElementById("historiam").value;
+		var img1 = $('#img1').val();
+		var img2 = $('#img2').val();
+		var img3 = $('#img3').val();
+		console.log(img1+"."+img2+"."+img3);
 
-		if(nombreUser!="" && apellidoUser!="" && cedulaUser!="" && telefonoUser!="" && nombreMascota!="" && edadMascota!="" && historiaMascota!=""){
+		if(nombreUser!="" && apellidoUser!="" && cedulaUser!="" && telefonoUser!="" && nombreMascota!="" && edadMascota!="" && historiaMascota!="" && img1!="" && img2!="" && img3!=""){
 			
 			$("#infoBtn").hide();
 			$("#infoSpinner").show();
