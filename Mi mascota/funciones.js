@@ -58,6 +58,7 @@ function signout(){
 	firebase.auth().signOut().then(function() {
   		$("#signin").show();
 		$("#signout").hide();
+		$("#adminView").hide();
 	}, function(error) {
  	    console.log("No se realizo signout");
 	});
