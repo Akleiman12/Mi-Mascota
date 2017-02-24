@@ -32,7 +32,6 @@
             var last=childSnapshot.child("apellido").val();
             var first =childSnapshot.child("nombre").val();
             var ced = childSnapshot.child("cedula").val();
-            var telf = childSnapshot.child("telefono").val();
             var id = childSnapshot.child("id").val();
 
             var query2 = firebase.database().ref("mascota/"+id).orderByKey();
@@ -42,7 +41,7 @@
               var edadm = snapshot2.child("edad").val();
               var historiam = snapshot2.child("historia").val();
 
-              var newRow = $('<tr><td></td><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+telf+'</p></td><td><p>'+nombrem+'</p></td><td><p>'+edadm+'</p></td><td><p>'+historiam+'</p></td></tr>');
+              var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+nombrem+'</p></td><td><a href="perfil?useriID='+id+'">Perfil</a></td></tr>');
               $("#tablaUsuarios").append(newRow);
             });
 
@@ -211,17 +210,14 @@
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
-        <table id="tablaUsuarios" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+        <table id="tablaUsuarios" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" align="center">
           <thead>
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Numero de Cedula</th>
-            <th>Numero de Telefono</th>
             <th>Nombre de la Mascota</th>
-            <th>Edad de la Mascota</th>
-            <th>Historia de la Mascota</th>
-            <th>Fotos</th>
+            <th>Visitar</th>
           </tr>
           </thead>
         </table>

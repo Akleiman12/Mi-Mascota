@@ -22,6 +22,11 @@
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="funciones.js"></script>
+    <script type="text/javascript" src="perfil.js"></script>
+    <script>
+      var = getParameterByName('userID');
+
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
@@ -64,31 +69,31 @@
       z-index: 900;
     }
     .demo-card-wide.mdl-card {
-      width: 512px;
-      align-self: center;
-  }
+	    width: 512px;
+	    align-self: center;
+	}
     .demo-card-wide > .mdl-card__title {
-      color: #fff;
-      height: 176px;
-  }
-  .demo-card-wide > .mdl-card__menu {
-      color: #fff;
-  }
-    
+	    color: #fff;
+	    height: 176px;
+	}
+	.demo-card-wide > .mdl-card__menu {
+	    color: #fff;
+	}
+	  
     </style>
   </head>
   <body>
   <div align="center" class="pantallaRegistro">
       <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 50%; height: 100%">
       <row>
-        <div align="right">
-          <button class="mdl-button mdl-js-button mdl-button--icon" onclick="ocultaRegistro()">
-          <i class="material-icons">clear</i>
-        </button>
-      </div>
-      <div align="center">
-          <img src="images/favicon.png" style="height: 175px">
-        </div>
+	      <div align="right">
+		      <button class="mdl-button mdl-js-button mdl-button--icon" onclick="ocultaRegistro()">
+		  		<i class="material-icons">clear</i>
+			  </button>
+		  </div>
+		  <div align="center">
+	        <img src="images/favicon.png" style="height: 175px">
+	      </div>
       </row>
         <h1 style="margin-top: 10px;"> Bienvenido a Mi Mascota! </h1>
             <div class="mdl-textfield mdl-js-textfield">
@@ -114,14 +119,14 @@
     <div align="center" class="pantallaLogin">
       <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 50%; height: 100%">
       <row>
-        <div align="right">
-          <button class="mdl-button mdl-js-button mdl-button--icon" onclick="ocultaLogin()">
-          <i class="material-icons">clear</i>
-        </button>
-      </div>
-      <div align="center">
-          <img src="images/favicon.png" style="height: 175px">
-        </div>
+	      <div align="right">
+		      <button class="mdl-button mdl-js-button mdl-button--icon" onclick="ocultaLogin()">
+		  		<i class="material-icons">clear</i>
+			  </button>
+		  </div>
+		  <div align="center">
+	        <img src="images/favicon.png" style="height: 175px">
+	      </div>
       </row>
         <h1 style="margin-top: 20px;"> Bienvenido a Mi Mascota! </h1>
         <p id="loginError"></p>         
@@ -140,29 +145,29 @@
               <div class="mdl-spinner mdl-js-spinner is-active" id="loginSpinner"></div>
             </div>
           <div style="margin-top: 20px;">  
-            <button class="mdl-button mdl-js-button mdl-button--raised" id="registroLogin" onclick="registro_login()"> Regístrate
-            </button>
-      </div>
+	          <button class="mdl-button mdl-js-button mdl-button--raised" id="registroLogin" onclick="registro_login()"> Regístrate
+	          </button>
+		  </div>
       </div>
     </div>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Noticias</span>
+          <span class="mdl-layout-title">Perfil</span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-navigation">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="muestraLogin()" id="signin">
-       Sign In
-      </button>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="signout()" id="signout">
-       Sign Out
-      </button>
+          	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="muestraLogin()" id="signin">
+ 			 Sign In
+			</button>
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="signout()" id="signout">
+ 			 Sign Out
+			</button>
           </div>
           <div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="muestraRegistro()" id="register">
-          Registrate
-            </button>
-      </div>
+	          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="muestraRegistro()" id="register">
+	 			 	Registrate
+		        </button>
+		  </div>
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
@@ -181,16 +186,53 @@
           <div class="mdl-layout-spacer"></div>
         </nav>
       </div>
-      <main class="mdl-layout__content mdl-color--grey-100">
+      <main class="mdl-layout__content mdl-color--grey-100" id="mainPerfil">
         <div class="mdl-grid demo-content">
-          
-          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-              <h2 class="mld-card_title-text">Resultados del Concurso!</h2>
-              <p>Aqui se publicaran las mascotas escogidas cuando el proceso de evaluacion haya culminado. No dejes de revisar, puede ser en cualquier momento!</p>
-          </div>
+        <div class="details">
+    <h3 id="nombreCompleto"></h3>
+    <p id="cedulaTel"></p>
+  </div>
+  <div>
+    <div class="col s12 m6" align="center">
+              <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title" id="nombreMascota"></span>
+                    <p id="historiaMascota"></p>
+                </div>
+          <div class="card-action">
+            <p id="edad"></p>
+              </div>
+            </div>
+            </div>
+  <div class="container pics">
+    <div class="title">
+      <h6 id="fotosDe"></h6>
+    </div>
+    <div class="row row-1">
+      <div class="col m4 s12">
+        <div class="card">
+                <div class="card-image" id="first-img">
+                </div>
+              </div>
+      </div>
+      <div class="col m4 s12">
+        <div class="card">
+                <div class="card-image" id="second-img">
+                </div>
+              </div>
+      </div>
+      <div class="col m4 s12">
+        <div class="card">
+                <div class="card-image" id="third-img">
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
         </div>
       </main>
     </div>
-    
+
+
   </body>
 </html>
