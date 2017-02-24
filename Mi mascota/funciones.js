@@ -73,11 +73,13 @@ function registro(){
   			var errorMessage = error.message;
   			alert(errorMessage);
   			console.log(error);
+  			$("#registroSpinner").hide();
+			$("#registroBtn").show();
 		}).then(function(){
 			var usuario = firebase.auth().currentUser;
 			firebase.database().ref('users/' + usuario.uid).set({
-			    nombre: name,
-			    email: email
+			    nombre: nombre,
+			    email: correo
 			});
 		});
 
