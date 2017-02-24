@@ -3,14 +3,14 @@ function enviarInfo(){
 
 	if(user){
 		var nombreUser = document.getElementById("nombre").value;
-		var apellidoUser = document.getElementById("nombre").value;
-		var cedulaUser = document.getElementById("nombre").value;
-		var telefonoUser = document.getElementById("nombre").value;
-		var nombreMascota = document.getElementById("nombre").value;
-		var edadMascota = document.getElementById("nombre").value;
-		var historiaMascota = document.getElementById("nombre").value;
+		var apellidoUser = document.getElementById("apellido").value;
+		var cedulaUser = document.getElementById("numced").value;
+		var telefonoUser = document.getElementById("numtel").value;
+		var nombreMascota = document.getElementById("nombrem").value;
+		var edadMascota = document.getElementById("edadm").value;
+		var historiaMascota = document.getElementById("historiam").value;
 
-		if(nombreUser!=null && apellidoUser!=null && cedulaUser!=null && telefonoUser!=null && nombreMascota!=null && edadMascota!=null && historiaMascota!=null){
+		if(nombreUser!="" && apellidoUser!="" && cedulaUser!="" && telefonoUser!="" && nombreMascota!="" && edadMascota!="" && historiaMascota!=""){
 			firebase.database().ref("users/"+user.uid).update({
 				nombre: nombreUser,
 				apellido: apellidoUser,

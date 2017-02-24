@@ -5,16 +5,7 @@ function registro(){
 
 	//creacion de usuario.
 	firebase.auth().createUserWithEmailAndPassword(email, password)
-    .catch(function(error) {
-	  	// Manejo de errores.
-	  	var errorCode = error.code;
-		var errorMessage = error.message;
-		if (errorCode == 'auth/weak-password') {
-	    	alert('The password is too weak.');
-		} else {
-	    	alert(errorMessage);
-		}
-	}).then(function(){
+    .then(function(){
 		var user = firebase.auth().currentUser;
 
 
@@ -27,5 +18,14 @@ function registro(){
 		}).catch(function(error){
 			alert(error.code);
 		});
+	}).catch(function(error) {
+	  	// Manejo de errores.
+	  	var errorCode = error.code;
+		var errorMessage = error.message;
+		if (errorCode == 'auth/weak-password') {
+	    	alert('The password is too weak.');
+		} else {
+	    	alert(errorMessage);
+		}
 	});
 }
