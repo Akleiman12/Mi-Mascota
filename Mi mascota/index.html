@@ -21,7 +21,7 @@
     <script type="text/javascript" src="firebase.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="login.js"></script>
+    <script type="text/javascript" src="funciones.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
@@ -78,6 +78,39 @@
     </style>
   </head>
   <body>
+  <div align="center" class="pantallaRegistro">
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 50%; height: 100%">
+      <row>
+	      <div align="right">
+		      <button class="mdl-button mdl-js-button mdl-button--icon" onclick="ocultaRegistro()">
+		  		<i class="material-icons">clear</i>
+			  </button>
+		  </div>
+		  <div align="center">
+	        <img src="images/favicon.png" style="height: 175px">
+	      </div>
+      </row>
+        <h1 style="margin-top: 10px;"> Bienvenido a Mi Mascota! </h1>
+            <div class="mdl-textfield mdl-js-textfield">
+              Correo Electronico
+              <input class="mdl-textfield__input" type="text" id="correo" >
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              Contraseña
+              <input class="mdl-textfield__input" type="password" id="contra"><br>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              Nombre
+              <input class="mdl-textfield__input" type="text" id="nombre"><br>
+            </div>
+            <div>
+              <button class="mdl-button mdl-js-button mdl-button--raised" onclick="registro()" id="registroBtn">
+                Registrar y Entrar!
+              </button>
+              <div class="mdl-spinner mdl-js-spinner is-active" id="registroSpinner"></div>
+            </div>
+      </div>
+    </div>
     <div align="center" class="pantallaLogin">
       <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 50%; height: 100%">
       <row>
@@ -91,8 +124,7 @@
 	      </div>
       </row>
         <h1 style="margin-top: 20px;"> Bienvenido a Mi Mascota! </h1>
-        <p id="loginError"></p>
-          <form action="#" style="margin-top:25px">
+        <p id="loginError"></p>         
             <div class="mdl-textfield mdl-js-textfield">
               Correo Electronico<br>
               <input class="mdl-textfield__input" type="text" id="email" ><br>
@@ -107,9 +139,10 @@
               </button>
               <div class="mdl-spinner mdl-js-spinner is-active" id="loginSpinner"></div>
             </div>
-          </form>
-          <a href="registro.html" style="margin-top: 10px">Todavia no tienes cuenta? Registrate ya!</a>
-
+          <div style="margin-top: 20px;">  
+	          <button class="mdl-button mdl-js-button mdl-button--raised" id="registroLogin" onclick="registro_login()"> Regístrate
+	          </button>
+		  </div>
       </div>
     </div>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -117,14 +150,19 @@
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">Home</span>
           <div class="mdl-layout-spacer"></div>
-          <div class="mdl-navigaion">
+          <div class="mdl-navigation">
           	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="muestraLogin()" id="signin">
  			 Sign In
 			</button>
-			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="" id="signout">
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="signout()" id="signout">
  			 Sign Out
 			</button>
           </div>
+          <div>
+	          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="muestraRegistro()" id="register">
+	 			 	Registrate
+		        </button>
+		  </div>
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
