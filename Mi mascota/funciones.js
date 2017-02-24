@@ -9,7 +9,6 @@ firebase.auth().onAuthStateChanged(function(user){
 		$("#register").hide();
 		$("#adminView").show();
 		$("#mainPerfil").show();
-		$("#mainPerfil").show();
 		$("#tablaUsuarios").show();
 
 	}
