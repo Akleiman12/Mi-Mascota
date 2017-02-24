@@ -64,7 +64,7 @@ function enviarInfo(){
 					$("#infoBtn").show();
 					$("#infoSpinner").hide();
 
-					window.location("/");
+					window.location = "index.html";
 
 
 				});
