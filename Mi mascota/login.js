@@ -40,3 +40,12 @@ function login(){
 	alert("Debes llenar los campos necesarios");
 	}
 	}
+
+	function signout(){
+		firebase.auth().signOut().then(function(){
+			$("#signin").show();
+			$("#signout").hide();
+		}, function(error) {
+  			console.error('Sign Out Error', error);
+		});
+	}
