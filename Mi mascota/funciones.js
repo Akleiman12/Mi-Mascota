@@ -24,6 +24,9 @@ firebase.auth().onAuthStateChanged(function(user){
 				$("#mainPerfil").show();
 				$("#tablaUsuarios").show();
 				$("#calificarBtn").show();
+				$("#rechazarBtn").show();
+				$("#requestBtn").show();
+
 			} else{
 				$("#adminView").hide();
 				$("#mainPerfil").hide();
@@ -32,6 +35,7 @@ firebase.auth().onAuthStateChanged(function(user){
 
 		if(user.uid == id){
 			$("#editarBtn").show();
+			$("#editarBtn2").show();
 		}
 		});
 		$("#signin").hide();
@@ -145,4 +149,16 @@ function calificar(){
 
 function editar(){
 	$("#info").show();
+}
+
+function editar2(){
+	$("#info2").show();
+}
+function ocultaInfo(){
+	$("#info").hide();
+}
+
+
+function ocultaInfo2(){
+	$("#info2").hide();
 }
