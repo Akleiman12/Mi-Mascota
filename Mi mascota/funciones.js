@@ -85,7 +85,7 @@ function login(){
 	  		$("#loginSpinner").hide();
 			$("#loginBtn").show();
 	  	}).then(function(){
-
+	  		location.reload();
 	});
 	}
 	else{
@@ -99,6 +99,7 @@ function signout(){
 		$("#signout").hide();
 		$("#adminView").hide();
 		$("#perfil").hide();
+		location.reload();
 	}, function(error) {
  	    console.log("No se realizo signout");
 	});
@@ -145,25 +146,29 @@ function registro_login(){
 function calificar(){
 	firebase.database().ref("users/"+id).update({
 				calificar: true,
-				rechazar: false
+				rechazar: false,
+				existeRequest: false
+			}).then(function(){
+				alert("Usuario calificado");
+				location.reload();
 			});
+
 
 }
 
 function rechazar(){
 	firebase.database().ref("users/"+id).update({
 				calificar: false,
-				rechazar: true
-			});
+				rechazar: true,
+				existeRequest: false
+			}).then(function(){
+				alert("Usuario rechazado");
+				location.reload();
+			});;
 }
 
-function request(mensaje){
-	firebase.database().ref("users/"+id).update({
-				calificar: false,
-				rechazar: false,
-				request: mensaje
-
-			});
+function request(){
+	$("#requestCambio").show();
 
 }
 
@@ -174,6 +179,7 @@ function editar(){
 function editar2(){
 	$("#info2").show();
 }
+
 function ocultaInfo(){
 	$("#info").hide();
 }
@@ -182,3 +188,36 @@ function ocultaInfo(){
 function ocultaInfo2(){
 	$("#info2").hide();
 }
+
+function ocultaRequest(){
+	$("#requestCambio").hide();
+}
+
+
+function enviarRequest(){
+		var cambio = document.getElementById("descripcionCambios").value;
+		if(cambio!=""){
+			$("#requestBtn").hide();
+			$("#requestSpinner").show();
+
+			firebase.database().ref("users/"+id).update({
+				calificar: false,
+				rechazar: false,
+				request: cambio,
+				existeRequest: true
+			}).then(function(){
+				$("#requestBtn2").show();
+				$("#requestSpinner").hide();
+				$("#requestCambio").hide();
+				alert("Petición hecho satisfactoriamente");
+				location.reload();
+			}).catch(function(){
+				alert("No se ha logrado hacer la petición");
+				$("#requestBtn2").show();
+				$("#requestSpinner").hide();
+			});
+		}
+		else{
+			alert("Recuerde responder a todos los campos");
+		}
+	}

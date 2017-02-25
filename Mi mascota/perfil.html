@@ -54,8 +54,29 @@
           var cedula= snapshot.child("cedula").val();
           var tel= snapshot.child("telefono").val();
           var email= snapshot.child("email").val();
+          var calificar = snapshot.child("calificar").val();
+          var rechazar = snapshot.child("rechazar").val();
+          var request = snapshot.child("request").val();
+          var existeRequest = snapshot.child("existeRequest").val();
+
           console.log(first);
           $("#detalles").html("<p style=\"font-size: 150%; margin-left: 5px;\">    <b>Nombre</b>: "+first+"<br>    <b>Apellido</b>: "+last+"<br>   <b>Cedula</b>: "+cedula+"<br>    <b>Telefono</b>: "+tel+"<br>   <b>Correo</b>: "+email+"</p>"); 
+          if(calificar){
+            $("#chipCalificado").show();
+            $("#chipRechazado").hide();
+            $("#chipPendiente").hide();
+          }
+          else if (rechazar){
+            $("#chipCalificado").hide();
+            $("#chipRechazado").show();
+            $("#chipPendiente").hide();
+          }
+          else if(existeRequest){
+            $("#cambiosAHacer").html("<p>"+request+"</p>");
+            $("#chipCalificado").hide();
+            $("#chipRechazado").hide();
+            $("#chipPendiente").show();
+          }
           var query2 = firebase.database().ref("mascota/"+id);
           query2.once("value").then(function(snapshot2){
 
@@ -293,6 +314,27 @@
                   </div>
                 </div>
 
+  <div id="requestCambio" align="center">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 50%; height: 100%">
+    <div align="right">
+          <button class="mdl-button mdl-js-button mdl-button--icon" onclick="ocultaRequest()">
+          <i class="material-icons">clear</i>
+        </button>
+    </div>
+    <h3 class="mld-card_title-text"> Cambios que deben hacerse: </h3>
+                <div class="mdl-textfield mdl-js-textfield">
+                  Describa los cambios:<br>
+                  <input class="mdl-textfield__input" type="text" rows="5" id="descripcionCambios"><br>
+                </div><br>
+                <div align="right">
+                  <button class="mdl-button mdl-js-button mdl-button--raised" onclick="enviarRequest()" id ="requestBtn2">
+                    ¡Enviar petición!
+                  </button>
+                  <div class="mdl-spinner mdl-js-spinner is-active" id="requestSpinner"></div>
+                </div>
+                </div>
+                </div>
+
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
@@ -333,10 +375,10 @@
       <main class="mdl-layout__content mdl-color--grey-100" >
               <div class="content-grid mdl-grid">
                 <div class="mdl-cell mdl-cell--6-col mdl-shadow--2dp" style="background-color: #FAFAFA">
-                  <h3 align="left" style="margin-bottom: 5px; margin-left: 5px;"> Informacion de Usuario:</h2><br>
+                  <h3 align="left" style="margin-bottom: 5px; margin-left: 5px;"> Informacion de Usuario:</h3><br>
                   <div id="detalles">
                   </div>
-                  <h3 align="left" style="margin-bottom: 5px; margin-left: 5px;"> Informacion de Mascota:</h2><br>
+                  <h3 align="left" style="margin-bottom: 5px; margin-left: 5px;"> Informacion de Mascota:</h3><br>
                   <div id="mascota">
                   </div>
                   <div id="adopt">
@@ -375,6 +417,29 @@
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="editar2()" id="editarBtn2">
                 Editar Mascota
               </button>
+              </div>
+              </div>
+              <div class="content-grid mdl-grid">
+              <div class="mdl-cell mdl-cell--4-col" id="chipCalificado">
+                <span class="mdl-chip mdl-chip--contact">
+                   <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">C</span>
+                      <span class="mdl-chip__text">Calificado</span>
+                </span>
+              </div>
+               <div class="mdl-cell mdl-cell--4-col" id="chipPendiente">
+                <div><span class="mdl-chip mdl-chip--contact">
+                   <span class="mdl-chip__contact mdl-color--grey mdl-color-text--white">P</span>
+                      <span class="mdl-chip__text">Pendiente</span>
+                </span></div>
+                  <div class="mdl-shadow--2dp" style="background-color: #FAFAFA">
+                  <h5 align="left" style="margin-bottom: 5px; margin-left: 5px;"> Cambios a hacer pedidos por el Administrador:</h5> <p id="cambiosAHacer" style="margin-bottom: 5px; margin-left: 15px;"></p><br>
+                </div>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col" id="chipRechazado">
+                <span class="mdl-chip mdl-chip--contact">
+                   <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">R</span>
+                      <span class="mdl-chip__text">Rechazado</span>
+                </span>
               </div>
               </div>
       </main>
