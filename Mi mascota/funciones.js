@@ -122,7 +122,8 @@ function registro(){
 			var usuario = firebase.auth().currentUser;
 			firebase.database().ref('users/' + usuario.uid).set({
 			    nombre: nombre,
-			    email: correo
+			    email: correo,
+			    id: usuario.uid
 			});
 		});
 
