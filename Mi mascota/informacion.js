@@ -3,7 +3,7 @@ function enviarInfo(){
 
 	if(user){
 
-		var nombreUser = document.getElementById("nombre").value;
+		var nombreUser = $('#nombreI').val();
 		var apellidoUser = document.getElementById("apellido").value;
 		var cedulaUser = document.getElementById("numced").value;
 		var telefonoUser = document.getElementById("numtel").value;
@@ -17,6 +17,18 @@ function enviarInfo(){
 		var file1 = document.getElementById('img1').files[0];
 		var file2 = document.getElementById('img2').files[0];
 		var file3 = document.getElementById('img3').files[0];
+		console.log(nombreUser);
+		console.log(apellidoUser);
+		console.log(cedulaUser);
+		console.log(telefonoUser);
+		console.log(nombreMascota);
+		console.log(edadMascota);
+		console.log(adopt);
+		console.log(historiaMascota);
+		console.log(img1);
+		console.log(img2);
+		console.log(img3);
+
 
 
 		if(nombreUser!="" && apellidoUser!="" && cedulaUser!="" && telefonoUser!="" && nombreMascota!="" && edadMascota!="" && historiaMascota!="" && img1!="" && img2!="" && img3!=""){

@@ -39,6 +39,7 @@ function enviarInfo2(){
 		var nombreMascota = document.getElementById("nombrem").value;
 		var edadMascota = document.getElementById("edadm").value;
 		var historiaMascota = document.getElementById("historiam").value;
+		var adoptaMascota = document.getElementById("adoptam").value;
 		var img1 = $('#img1').val();
 		var img2 = $('#img2').val();
 		var img3 = $('#img3').val();
@@ -51,7 +52,9 @@ function enviarInfo2(){
 		firebase.database().ref("mascota/"+user.uid).set({
 					nombre: nombreMascota,
 					edad: edadMascota,
-					historia: historiaMascota
+					historia: historiaMascota,
+					adopt: adoptaMascota
+
 				}).catch(function(error){
 					alert("ERROR.");
 					$("#infoBtn3").show();

@@ -145,6 +145,24 @@ function registro_login(){
 function calificar(){
 	firebase.database().ref("users/"+id).update({
 				calificar: true,
+				rechazar: false
+			});
+
+}
+
+function rechazar(){
+	firebase.database().ref("users/"+id).update({
+				calificar: false,
+				rechazar: true
+			});
+}
+
+function request(mensaje){
+	firebase.database().ref("users/"+id).update({
+				calificar: false,
+				rechazar: false,
+				request: mensaje
+
 			});
 
 }
