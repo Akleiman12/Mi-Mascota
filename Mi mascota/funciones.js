@@ -98,6 +98,7 @@ function signout(){
   		$("#signin").show();
 		$("#signout").hide();
 		$("#adminView").hide();
+		$("#perfil").hide();
 	}, function(error) {
  	    console.log("No se realizo signout");
 	});
