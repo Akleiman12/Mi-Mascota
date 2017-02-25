@@ -33,6 +33,12 @@
       else{
        console.log("No se encontró usuario");
       }
+
+      var query = firebase.database().ref("users/"+id);
+      query.once("value").then(function(snapshot){
+        var nombre = snapshot.child("nombre").val();
+        $("#username").html("<h3>Bienvenido, <b>"+nombre+"</b>!</h3>");
+      })
     });
     </script>
     <script type="text/javascript">
@@ -180,10 +186,9 @@
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-          <img src="images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
           <div hidden id="tablaUsuarios"></div>
-            <span>hello@example.com</span>
+            <span id="username"></span>
             <div class="mdl-layout-spacer"></div>
           </div>
         </header>
@@ -247,15 +252,18 @@
                 <p> A continuacion seleccione las imagenes que desea usar para el concurso:</p>
                 <div>
                   Imagen 1:<br>
-                  <input type="file" accept="image/*" id="img1"><br>
+                  <input type="file" accept="image/jpg" id="img1"><br>
+                  <div id="p1" class="mdl-progress mdl-js-progress"></div>
                 </div><br>
                 <div>
                   Imagen 2:<br>
-                  <input type="file" accept="image/*" id="img2"><br>
+                  <input type="file" accept="image/jpg" id="img2"><br>
+                  <div id="p2" class="mdl-progress mdl-js-progress"></div>
                 </div><br>
                 <div>
                   Imagen 3:<br>
                   <input type="file" accept="image/*" id="img3"><br>
+                  <div id="p3" class="mdl-progress mdl-js-progress"></div>
                 </div><br>
                 <div align="right">
                   <button class="mdl-button mdl-js-button mdl-button--raised" onclick="enviarInfo()" id ="infoBtn">

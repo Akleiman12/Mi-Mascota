@@ -32,6 +32,12 @@
       else{
        console.log("No se encontró usuario");
       }
+
+      var query = firebase.database().ref("users/"+id);
+      query.once("value").then(function(snapshot){
+        var nombre = snapshot.child("nombre").val();
+        $("#username").html("<h3>Bienvenido, <b>"+nombre+"</b>!</h3>");
+      })
     });
     </script>
     <meta charset="utf-8">
@@ -179,9 +185,8 @@
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-          <img src="images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
-            <span>hello@example.com</span>
+            <span id="username"></span>
             <div class="mdl-layout-spacer"></div>
           </div>
         </header>

@@ -71,6 +71,11 @@ function enviarInfo(){
 					
 					uploadtask1.on('state_changed', function(snapshot){
 						console.log("Cargando1");
+						while(true){
+							document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+    							this.MaterialProgress.setProgress((snapshot.bytesTransferred/snapshot.totalBytes)*100);
+  							});
+						}
 					}, function(error){
 						alert("ERROR.");
 					}, function(){
@@ -82,6 +87,11 @@ function enviarInfo(){
 						console.log("upload2");
 						uploadtask2.on('state_changed', function(snapshot){
 							console.log("Cargando2");
+							while(true){
+								document.querySelector('#p2').addEventListener('mdl-componentupgraded', function() {
+    								this.MaterialProgress.setProgress((snapshot.bytesTransferred/snapshot.totalBytes)*100);
+  								});
+							}
 						}, function(error){
 							alert("ERROR.");
 						}, function(){
@@ -94,6 +104,11 @@ function enviarInfo(){
 							console.log("upload3");
 							uploadtask3.on('state_changed', function(snapshot){
 								console.log("Cargando3");
+								while(true){
+									document.querySelector('#p3').addEventListener('mdl-componentupgraded', function() {
+    									this.MaterialProgress.setProgress((snapshot.bytesTransferred/snapshot.totalBytes)*100);
+  									});
+								}
 							}, function(error){
 								alert("ERROR.");
 							}, function(){
@@ -102,13 +117,14 @@ function enviarInfo(){
 								firebase.database().ref("img/"+user.uid).update({
 									url3: downloadURL
 								})
+								$("#infoBtn").show();
+								$("#infoSpinner").hide();
 							});
 						});
 					});
 
 					
-					$("#infoBtn").show();
-					$("#infoSpinner").hide();
+					
 
 					//window.location = "index.html";
 
