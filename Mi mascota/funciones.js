@@ -1,15 +1,45 @@
+    function getParameterByName(name, url) {
+        if (!url) {
+          url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    var id= getParameterByName('userID');
+
 firebase.auth().onAuthStateChanged(function(user){
 	if(user){
+		var uid = user.uid;
+		console.log(uid);
+		var referencia = firebase.database().ref("users/"+uid);
+		referencia.once("value").then(function(snapshot) {
+			var administrador = snapshot.child("admin").val();
+			console.log(administrador);
+			if(administrador){
+				$("#adminView").show();
+				$("#mainPerfil").show();
+				$("#tablaUsuarios").show();
+				$("#calificarBtn").show();
+			} else{
+				$("#adminView").hide();
+				$("#mainPerfil").hide();
+				$("#tablaUsuarios").hide();
+			}
+
+		if(user.uid == id){
+			$("#editarBtn").show();
+		}
+		});
 		$("#signin").hide();
-		console.log("oculte signin");
-		$("#signout").show();
-		console.log("mostre signout");
+		$("#signout").show();	
 		$(".pantallaLogin").hide();
 		$(".pantallaRegistro").hide();
 		$("#register").hide();
-		$("#adminView").show();
-		$("#mainPerfil").show();
-		$("#tablaUsuarios").show();
+		
 
 	}
 	else{
@@ -20,7 +50,7 @@ firebase.auth().onAuthStateChanged(function(user){
 		$("#tablaUsuarios").hide();
 		$("#mainPerfil").hide();
 	}
-})
+});
 
 function muestraLogin(){
 	$(".pantallaLogin").show();
@@ -104,4 +134,15 @@ function registro_login(){
 		console.log("oculte Login");
 		$(".pantallaRegistro").show();
 		console.log("mostre Registro");
+}
+
+function calificar(){
+	firebase.database().ref("users/"+id).update({
+				calificar: true,
+			});
+
+}
+
+function editar(){
+	$("#info").show();
 }
