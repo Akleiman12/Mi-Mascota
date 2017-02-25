@@ -52,6 +52,15 @@
             var edadMascota = snapshot2.child("edad").val();
             var historia = snapshot2.child("historia").val();
             $("#mascota").html("<p style=\"font-size: 150%; margin-left: 5px;\">   Nombre: "+nombreMas+"<br>   Historia Breve: "+historia+"<br>    Edad: "+edadMascota+"</p>");
+
+            var queryImg = firebase.database().ref("img/"+id);
+            queryImg.once("value").then(function(snapshot3){
+              var img1 = snapshot3.child("url1").val();
+              var img2 = snapshot3.child("url2").val();
+              var img3 = snapshot3.child("url3").val();
+
+              $("#imagenes").html("<a href="+img1+"><img src="+img1+" href="+img1+"></a><br><br><a href="+img2+"><img src="+img2+" href="+img2+"></a><br><br><a href="+img3+"><img src="+img3+"  href="+img3+"></a><br>");
+            });
           });          
         });
 
@@ -109,6 +118,11 @@
 	.demo-card-wide > .mdl-card__menu {
 	    color: #fff;
 	}
+  img {
+    display: block;
+    margin: auto;
+    width: 50%;
+  }
 	  
     </style>
   </head>
@@ -227,8 +241,10 @@
                   </div>
                 </div>
                 <div class="mdl-cell mdl-cell--6-col mdl-shadow--2dp" style="background-color: #FAFAFA">
+                  <h3 style="margin-left: 5px" align="center"> Fotos publicadas </h3>
                   <div id="imagenes">
-                    <h3 style="margin-left: 5px;"> Fotos publicadas </h3>
+                    
+
                   </div>
                 </div>
               </div>

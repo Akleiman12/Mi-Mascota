@@ -2,6 +2,7 @@ function enviarInfo(){
 	var user = firebase.auth().currentUser;
 
 	if(user){
+
 		var nombreUser = document.getElementById("nombre").value;
 		var apellidoUser = document.getElementById("apellido").value;
 		var cedulaUser = document.getElementById("numced").value;
@@ -38,10 +39,12 @@ function enviarInfo(){
 					$("#infoSpinner").hide();
 				}).then(function(){
 					
+					var storageRef = firebase.storage().ref();
+
 					storageRef.child('images/'+user.uid).delete().catch(function(error){
 						console.log("Montando fotos por primera vez");
 					})
-					var storageRef = firebase.storage().ref();
+					
 					console.log("creando tasks");
 					console.log("creando task1");
 					var uploadtask1 = storageRef.child('images/'+user.uid+'/'+file1.name).put(file1);
@@ -62,7 +65,7 @@ function enviarInfo(){
 						firebase.database().ref("img/"+user.uid).set({
 							url1: downloadURL
 						})
-
+						console.log("upload2");
 						uploadtask2.on('state_changed', function(snapshot){
 							console.log("Cargando2");
 						}, function(error){
