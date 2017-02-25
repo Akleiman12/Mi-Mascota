@@ -43,14 +43,20 @@
           var tel= snapshot.child("telefono").val();
           var email= snapshot.child("email").val();
           console.log(first);
-          $("#detalles").html("<p style=\"font-size: 150%; margin-left: 5px;\">    Nombre: "+first+"<br>    Apellido: "+last+"<br>   Cedula: "+cedula+"<br>    Telefono: "+tel+"<br>   Correo: "+email+"</p>"); 
+          $("#detalles").html("<p style=\"font-size: 150%; margin-left: 5px;\">    <b>Nombre</b>: "+first+"<br>    <b>Apellido</b>: "+last+"<br>   <b>Cedula</b>: "+cedula+"<br>    <b>Telefono</b>: "+tel+"<br>   <b>Correo</b>: "+email+"</p>"); 
           var query2 = firebase.database().ref("mascota/"+id);
           query2.once("value").then(function(snapshot2){
 
             var nombreMas = snapshot2.child("nombre").val();
             var edadMascota = snapshot2.child("edad").val();
             var historia = snapshot2.child("historia").val();
-            $("#mascota").html("<p style=\"font-size: 150%; margin-left: 5px;\">   Nombre: "+nombreMas+"<br>   Historia Breve: "+historia+"<br>    Edad: "+edadMascota+"</p>");
+            var adopt = snapshot2.child("adopt").val();
+
+            $("#mascota").html("<p style=\"font-size: 150%; margin-left: 5px;\">   <b>Nombre</b>: "+nombreMas+"<br>   <b>Historia Breve</b>: "+historia+"<br>    <b>Edad</b>: "+edadMascota+"</p>");
+
+            if(adopt!="" && adopt!=null){
+              $("#adopt").html("<p style=\"font-size: 150%; margin-left: 5px;\">   <b>Historia de Adopcion</b>: "+adopt+"<br></p>");
+            }
 
             var queryImg = firebase.database().ref("img/"+id);
             queryImg.once("value").then(function(snapshot3){
@@ -302,6 +308,8 @@
                   </div>
                   <h3 align="left" style="margin-bottom: 5px; margin-left: 5px;"> Informacion de Mascota:</h2><br>
                   <div id="mascota">
+                  </div>
+                  <div id="adopt">
                   </div>
                 </div>
                 <div class="mdl-cell mdl-cell--6-col mdl-shadow--2dp" style="background-color: #FAFAFA">

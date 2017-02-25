@@ -9,6 +9,7 @@ function enviarInfo(){
 		var telefonoUser = document.getElementById("numtel").value;
 		var nombreMascota = document.getElementById("nombrem").value;
 		var edadMascota = document.getElementById("edadm").value;
+		var adopt = document.getElementById("adopt").value;
 		var historiaMascota = document.getElementById("historiam").value;
 		var img1 = $('#img1').val();
 		var img2 = $('#img2').val();
@@ -32,7 +33,8 @@ function enviarInfo(){
 				firebase.database().ref("mascota/"+user.uid).set({
 					nombre: nombreMascota,
 					edad: edadMascota,
-					historia: historiaMascota
+					historia: historiaMascota,
+					adopt: adopt
 				}).catch(function(error){
 					alert("ERROR.");
 					$("#infoBtn").show();
