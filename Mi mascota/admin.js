@@ -3,7 +3,8 @@ function mostrarTodos() {
 }
 
 function mostrarAceptados() {
-
+	$("#tablaUsuarios tr").remove();
+	$("#tablaUsuarios").append($('<thead><th>Nombre</th><th>Apellido</th><th>Numero de Cedula</th><th>Nombre de la Mascota</th><th>Estado</th><th>Visitar</th></thead>'));
 
 	var query = firebase.database().ref("users").orderByKey();
       var table = $("#tablaUsuarios").val();
@@ -43,7 +44,8 @@ function mostrarAceptados() {
 }
 
 function mostrarRechazados() {
-
+	$("#tablaUsuarios tr").remove();
+	$("#tablaUsuarios").append($('<thead><th>Nombre</th><th>Apellido</th><th>Numero de Cedula</th><th>Nombre de la Mascota</th><th>Estado</th><th>Visitar</th></thead>'));
 
 	var query = firebase.database().ref("users").orderByKey();
       var table = $("#tablaUsuarios").val();
@@ -79,7 +81,8 @@ function mostrarRechazados() {
 }
 
 function mostrarPendientes() {
-
+	$("#tablaUsuarios tr").remove();
+	$("#tablaUsuarios").append($('<thead><th>Nombre</th><th>Apellido</th><th>Numero de Cedula</th><th>Nombre de la Mascota</th><th>Estado</th><th>Visitar</th></thead>'));
 
 	var query = firebase.database().ref("users").orderByKey();
       var table = $("#tablaUsuarios").val();
@@ -115,7 +118,8 @@ function mostrarPendientes() {
 }
 
 function mostrarRev() {
-
+	$("#tablaUsuarios tr").remove();
+	$("#tablaUsuarios").append($('<thead><th>Nombre</th><th>Apellido</th><th>Numero de Cedula</th><th>Nombre de la Mascota</th><th>Estado</th><th>Visitar</th></thead>'));
 
 	var query = firebase.database().ref("users").orderByKey();
       var table = $("#tablaUsuarios").val();
