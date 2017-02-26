@@ -22,6 +22,7 @@
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="funciones.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
      <script>
       firebase.auth().onAuthStateChanged(function(user) {
       if(user){
@@ -51,6 +52,9 @@
             var first =childSnapshot.child("nombre").val();
             var ced = childSnapshot.child("cedula").val();
             var id = childSnapshot.child("id").val();
+            var aceptado = childSnapshot.child("calificar").val();
+            var rechazado = childSnapshot.child("rechazar").val();
+            var modificar = childSnapshot.child("existeRequest").val();
 
             var query2 = firebase.database().ref("mascota/"+id).orderByKey();
 
@@ -58,8 +62,20 @@
               var nombrem = snapshot2.child("nombre").val();
               var edadm = snapshot2.child("edad").val();
               var historiam = snapshot2.child("historia").val();
+              
 
-              var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+nombrem+'</p></td><td><a href="perfil?userID='+id+'">Perfil</a></td></tr>');
+              console.log(nombre+aceptado+rechazado+modificar);
+
+              if(aceptado==true){
+                var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+nombrem+'</p></td><td><i class="material-icons">check</i></td><td><a href="perfil?userID='+id+'">Perfil</a></td></tr>');
+              }else if(rechazado==true){
+                var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+nombrem+'</p></td><td><i class="material-icons">cancel</i></td><td><a href="perfil?userID='+id+'">Perfil</a></td></tr>');
+              }else if(modificar==true){
+                var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+nombrem+'</p></td><td><i class="material-icons">build</i></td><td><a href="perfil?userID='+id+'">Perfil</a></td></tr>');
+              }else{
+                var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+nombrem+'</p></td><td><i class="material-icons">search</i></td><td><a href="perfil?userID='+id+'">Perfil</a></td></tr>');
+              }
+
               $("#tablaUsuarios").append(newRow);
             });
 
@@ -235,10 +251,57 @@
             <th>Apellido</th>
             <th>Numero de Cedula</th>
             <th>Nombre de la Mascota</th>
+            <th>Estado</th>
             <th>Visitar</th>
           </tr>
           </thead>
         </table>
+        <div align="left">
+          <br>
+          <br>
+          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+              <tr>
+                <th>Icono</th>
+                <th>Siginificado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="material-icons">check</i></td><td>Aceptado</td>
+              </tr>
+              <tr>
+                <td><i class="material-icons">cancel</i></td><td>Rechazado</td>
+              </tr>
+              <tr>
+                <td><i class="material-icons">build</i></td><td>Peticion de Edicion Realizada</td>
+              </tr>
+              <tr>
+                <td><i class="material-icons">search</i></td><td>Sin revisar</td>
+              </tr>
+            </tbody>
+          </table>
+          <br><br>
+          <button class="mdl-button mdl-js-button mdl-button--raised" onclick="mostrarTodos()" id ="infoBtn" style="margin-bottom: 5px;">
+            Mostrar Todos
+          </button>
+          <br>
+          <button class="mdl-button mdl-js-button mdl-button--raised" onclick="mostrarAceptados()" id ="infoBtn" style="margin-bottom: 5px;">
+            Mostrar Aceptados
+          </button>
+          <br>
+          <button class="mdl-button mdl-js-button mdl-button--raised" onclick="mostrarPendientes()" id ="infoBtn" style="margin-bottom: 5px;">
+            Mostrar Pendientes de Edicion
+          </button>
+          <br>
+          <button class="mdl-button mdl-js-button mdl-button--raised" onclick="mostrarRev()" id ="infoBtn" style="margin-bottom: 5px;">
+            Mostrar Sin Revisar
+          </button>
+          <br>
+          <button class="mdl-button mdl-js-button mdl-button--raised" onclick="mostrarRechazados()" id ="infoBtn" style="margin-bottom: 5px;">
+            Mostrar Rechazados
+          </button>
+        </div>
       </main>
     </div>
 
