@@ -99,7 +99,7 @@ function signout(){
 		$("#signout").hide();
 		$("#adminView").hide();
 		$("#perfil").hide();
-		location.reload();
+		window.location = "/index.html";
 	}, function(error) {
  	    console.log("No se realizo signout");
 	});
