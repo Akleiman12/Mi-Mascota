@@ -217,36 +217,36 @@
                 <h3 class="mld-card_title-text"> Informacion de Usuario: </h3>
                 <div class="mdl-textfield mdl-js-textfield">
                   Nombre:<br>
-                  <input class="mdl-textfield__input" type="text" id="nombreI"><br>
+                  <input class="mdl-textfield__input" type="text" id="nombreI" maxlength="20"><br>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield">
                   Apellido:<br>
-                  <input class="mdl-textfield__input" type="text" id="apellido"><br>
+                  <input class="mdl-textfield__input" type="text" id="apellido" maxlength="20"><br>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield">
                   Numero de Cedula:<br>
-                  <input class="mdl-textfield__input" type="text" id="numced"><br>
+                  <input class="mdl-textfield__input" type="text" id="numced" maxlength="10"><br>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield">
                   Numero de Telefono:<br>
-                  <input class="mdl-textfield__input" type="text" id="numtel"><br>
+                  <input class="mdl-textfield__input" type="text" id="numtel" maxlength="20"><br>
                 </div><br>
                 <h3 class="mld-card_title-text"> Informacion de su Mascota: </h3>
                 <div class="mdl-textfield mdl-js-textfield">
                   Nombre de su Mascota:<br>
-                  <input class="mdl-textfield__input" type="text" id="nombrem"><br>
+                  <input class="mdl-textfield__input" type="text" id="nombrem" maxlength="20"><br>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield">
                   Edad de su Mascota:<br>
-                  <input class="mdl-textfield__input" type="text" id="edadm"><br>
+                  <input class="mdl-textfield__input" type="text" id="edadm" maxlength="20"><br>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield">
                   Historia de su Mascota:<br>
-                  <textarea class="mdl-textfield__input" type="text" rows= "5" id="historiam" ></textarea><br>
+                  <textarea class="mdl-textfield__input" type="text" rows= "5" id="historiam" maxlength="400"></textarea><br>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield">
                   ¿Es su mascota adoptada? Si lo es, cuéntenos un poco de ello.<br>
-                  <textarea class="mdl-textfield__input" type="text" rows="5" id="adopt"></textarea><br>
+                  <textarea class="mdl-textfield__input" type="text" rows="5" id="adopt" maxlength="400"></textarea><br>
                 </div><br>
                 <h3 class="mld-card_title-text"> Imagenes de su Mascota: </h3>
                 <p> A continuacion seleccione las imagenes que desea usar para el concurso:</p>
@@ -266,12 +266,13 @@
                   <div id="p3" class="mdl-progress mdl-js-progress"></div>
                 </div><br>
                 <div align="right">
+
                   <button class="mdl-button mdl-js-button mdl-button--raised" onclick="enviarInfo()" id ="infoBtn">
                     Enviar Informacion!
                   </button>
                   <div class="mdl-spinner mdl-js-spinner is-active" id="infoSpinner"></div>
                 </div>
-              
+                <small align="right">Porfavor espere a que la pagina le indique que toda su informacion ha sido subida exitosamente.</small>
 
           </div>
         </div>
